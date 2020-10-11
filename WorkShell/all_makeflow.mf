@@ -1,0 +1,1043 @@
+SID=U2OS-b3-R1
+RID=U2OS-b3-R1
+Lane=L1
+Rep=D1
+AID=U2OS-b3-R1__D1__L1
+TID=U2OS-b3-R1__D1
+LID=U2OS-b3-R1__L1
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R1__D1__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R1__D1__L1"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R1__D1__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D1__L1_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D1__L1_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R1__D1__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D1__L1_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D1__L1_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input 
+
+CATEGORY="star.U2OS-b3-R1__D1__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L1.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R1__D1__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1__L1.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R1
+RID=U2OS-b3-R2
+Lane=L2
+Rep=D1
+AID=U2OS-b3-R1__D1__L2
+TID=U2OS-b3-R1__D1
+LID=U2OS-b3-R1__L2
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R13_L1_Q801606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R13_L1_Q801606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R1__D1__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R13_L1_Q801606.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R13_L1_Q801606.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L2_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R1__D1__L2"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L2_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R1__D1__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D1__L2_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D1__L2_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L2_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R1__D1__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D1__L2_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D1__L2_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L2_SS2.input 
+
+CATEGORY="star.U2OS-b3-R1__D1__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L2.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L2.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R1__D1__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1__L2.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R1
+RID=U2OS-b3-R3
+Lane=L3
+Rep=D1
+AID=U2OS-b3-R1__D1__L3
+TID=U2OS-b3-R1__D1
+LID=U2OS-b3-R1__L3
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R2_L1_Q802605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R2_L1_Q802605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R1__D1__L3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R2_L1_Q802605.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R2_L1_Q802605.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L3_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R1__D1__L3"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L3_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R1__D1__L3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D1__L3_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D1__L3_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L3_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R1__D1__L3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D1__L3_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D1__L3_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D1__L3_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L3_SS2.input 
+
+CATEGORY="star.U2OS-b3-R1__D1__L3"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L3.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L3.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L3_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R1__D1__L3"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1__L3.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L3_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R1
+RID=U2OS-b3-R4
+Lane=L1
+Rep=D2
+AID=U2OS-b3-R1__D2__L1
+TID=U2OS-b3-R1__D2
+LID=U2OS-b3-R1__L1
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R1__D2__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R1__D2__L1"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R1__D2__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D2__L1_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D2__L1_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R1__D2__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D2__L1_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D2__L1_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input 
+
+CATEGORY="star.U2OS-b3-R1__D2__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L1.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R1__D2__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D2__L1.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R1
+RID=U2OS-b3-R5
+Lane=L2
+Rep=D2
+AID=U2OS-b3-R1__D2__L2
+TID=U2OS-b3-R1__D2
+LID=U2OS-b3-R1__L2
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R3_L1_Q803605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R3_L1_Q803605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R1__D2__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R3_L1_Q803605.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R3_L1_Q803605.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L2_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R1__D2__L2"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L2_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R1__D2__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D2__L2_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FastQC/U2OS-b3-R1__D2__L2_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L2_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R1__D2__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D2__L2_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//TRIMGalore/U2OS-b3-R1__D2__L2_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RawFQ/U2OS-b3-R1__D2__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L2_SS2.input 
+
+CATEGORY="star.U2OS-b3-R1__D2__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L2.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L2.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R1__D2__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D2__L2.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R1
+RID=U2OS-b3-R1
+Lane=L1
+Rep=D1
+AID=U2OS-b3-R1__D1__L1
+TID=U2OS-b3-R1__D1
+LID=U2OS-b3-R1__L1
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+
+CATEGORY="bwa.trans.star.U2OS-b3-R1__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.toTranscriptome.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.toTranscriptome.sortN.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L2.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L3.Aligned.toTranscriptome.out.bam  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L1.Aligned.sortedByCoord.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L2.Aligned.sortedByCoord.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1__L3.Aligned.sortedByCoord.out.bam 
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranStar /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input
+
+CATEGORY="bwa.trans.hisat.U2OS-b3-R1__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1.hisat2.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1.hisat2.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1__L1.hisat2.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1__L2.hisat2.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D1__L3.hisat2.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranHisat /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input
+
+CATEGORY="rsemce.U2OS-b3-R1__D1"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RSEM//U2OS-b3-R1__D1.rsemce.isoforms.results /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RSEM//U2OS-b3-R1__D1.rsemce.genes.results : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.toTranscriptome.sortN.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/RSEMce /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.toTranscriptome.sortN.markdup.bam
+
+CATEGORY="featureCounts.U2OS-b3-R1__D1"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FeatureCounts//U2OS-b3-R1__D1.fCounts.txt : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FeatureCounts /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="asgal.splicing.U2OS-b3-R1__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//ASGAL//U2OS-b3-R1__D1/ASGAL.csv : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L1_trimmed_2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L2_trimmed_2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D1__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/ASGAL /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input
+
+CATEGORY="spladder.splicing.U2OS-b3-R1__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//SplAdder/U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup_exon_skip_C3.txt.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/SplAdder /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="cufflinks.U2OS-b3-R1__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CuffLinks//U2OS-b3-R1__D1.combined.gtf : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CuffLinks /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D1__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D1.Aligned.sortedByCoord.sort.markdup.bam
+
+
+
+SID=U2OS-b3-R1
+RID=U2OS-b3-R4
+Lane=L1
+Rep=D2
+AID=U2OS-b3-R1__D2__L1
+TID=U2OS-b3-R1__D2
+LID=U2OS-b3-R1__L1
+AIDs=(U2OS-b3-R1__D1__L1 U2OS-b3-R1__D1__L2 U2OS-b3-R1__D1__L3 U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+TIDs=(U2OS-b3-R1__D1 U2OS-b3-R1__D2)
+LIDs=(U2OS-b3-R1__D2__L1 U2OS-b3-R1__D2__L2)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+
+CATEGORY="bwa.trans.star.U2OS-b3-R1__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.toTranscriptome.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.toTranscriptome.sortN.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L2.Aligned.toTranscriptome.out.bam  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L1.Aligned.sortedByCoord.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2__L2.Aligned.sortedByCoord.out.bam 
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranStar /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input
+
+CATEGORY="bwa.trans.hisat.U2OS-b3-R1__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D2.hisat2.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D2.hisat2.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D2__L1.hisat2.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//HISAT2//U2OS-b3-R1__D2__L2.hisat2.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranHisat /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input
+
+CATEGORY="rsemce.U2OS-b3-R1__D2"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RSEM//U2OS-b3-R1__D2.rsemce.isoforms.results /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//RSEM//U2OS-b3-R1__D2.rsemce.genes.results : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.toTranscriptome.sortN.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/RSEMce /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.toTranscriptome.sortN.markdup.bam
+
+CATEGORY="featureCounts.U2OS-b3-R1__D2"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//FeatureCounts//U2OS-b3-R1__D2.fCounts.txt : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FeatureCounts /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="asgal.splicing.U2OS-b3-R1__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//ASGAL//U2OS-b3-R1__D2/ASGAL.csv : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L1_trimmed_2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CutAdapt/U2OS-b3-R1__D2__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/ASGAL /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input
+
+CATEGORY="spladder.splicing.U2OS-b3-R1__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//SplAdder/U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup_exon_skip_C3.txt.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/SplAdder /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="cufflinks.U2OS-b3-R1__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//CuffLinks//U2OS-b3-R1__D2.combined.gtf : /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CuffLinks /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//WorkShell/U2OS-b3-R1__D2__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R1/SS2//STAR//U2OS-b3-R1__D2.Aligned.sortedByCoord.sort.markdup.bam
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R15_L1_Q803606
+Lane=L1
+Rep=D1
+AID=U2OS-b3-R15__D1__L1
+TID=U2OS-b3-R15__D1
+LID=U2OS-b3-R15__L1
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R15__D1__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R15__D1__L1"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R15__D1__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D1__L1_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D1__L1_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R15__D1__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D1__L1_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D1__L1_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input 
+
+CATEGORY="star.U2OS-b3-R15__D1__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L1.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R15__D1__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D1__L1.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R4_L1_Q804605
+Lane=L2
+Rep=D1
+AID=U2OS-b3-R15__D1__L2
+TID=U2OS-b3-R15__D1
+LID=U2OS-b3-R15__L2
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R4_L1_Q804605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R4_L1_Q804605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R15__D1__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R4_L1_Q804605.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R4_L1_Q804605.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L2_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R15__D1__L2"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L2_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R15__D1__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D1__L2_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D1__L2_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L2_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R15__D1__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D1__L2_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D1__L2_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D1__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L2_SS2.input 
+
+CATEGORY="star.U2OS-b3-R15__D1__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L2.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L2.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R15__D1__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D1__L2.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R16_L1_Q804606
+Lane=L1
+Rep=D2
+AID=U2OS-b3-R15__D2__L1
+TID=U2OS-b3-R15__D2
+LID=U2OS-b3-R15__L1
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D2__L1)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R15__D2__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R15__D2__L1"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R15__D2__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D2__L1_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D2__L1_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R15__D2__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D2__L1_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D2__L1_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D2__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input 
+
+CATEGORY="star.U2OS-b3-R15__D2__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2__L1.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R15__D2__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D2__L1.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R5_L1_Q805605
+Lane=L1
+Rep=D3
+AID=U2OS-b3-R15__D3__L1
+TID=U2OS-b3-R15__D3
+LID=U2OS-b3-R15__L1
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R15__D3__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R15__D3__L1"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R15__D3__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D3__L1_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D3__L1_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R15__D3__L1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D3__L1_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D3__L1_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L1_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input 
+
+CATEGORY="star.U2OS-b3-R15__D3__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L1.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R15__D3__L1"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3__L1.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R17_L1_Q805606
+Lane=L2
+Rep=D3
+AID=U2OS-b3-R15__D3__L2
+TID=U2OS-b3-R15__D3
+LID=U2OS-b3-R15__L2
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R17_L1_Q805606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R17_L1_Q805606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R15__D3__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R17_L1_Q805606.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R17_L1_Q805606.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L2_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R15__D3__L2"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L2_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R15__D3__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D3__L2_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D3__L2_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L2_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R15__D3__L2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D3__L2_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D3__L2_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L2_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L2_SS2.input 
+
+CATEGORY="star.U2OS-b3-R15__D3__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L2.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L2.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R15__D3__L2"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3__L2.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L2_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R6_L1_Q806605
+Lane=L3
+Rep=D3
+AID=U2OS-b3-R15__D3__L3
+TID=U2OS-b3-R15__D3
+LID=U2OS-b3-R15__L3
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R6_L1_Q806605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R6_L1_Q806605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+CATEGORY="fastqclink.U2OS-b3-R15__D3__L3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r2.fq.gz : /data/pubdata/SCDB/20200914_1800/U2OS-b3-R6_L1_Q806605.R1.fastq.gz /data/pubdata/SCDB/20200914_1800/U2OS-b3-R6_L1_Q806605.R2.fastq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastqLink /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L3_SS2.input
+
+CATEGORY="cutadapt.trim.U2OS-b3-R15__D3__L3"
+CORES=12
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CUTAdapt /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L3_SS2.input
+
+CATEGORY="fastqc.U2OS-b3-R15__D3__L3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D3__L3_r1_fastqc.html /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FastQC/U2OS-b3-R15__D3__L3_trimmed_2_fastqc.html : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FastQC /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L3_SS2.input
+
+CATEGORY="trim_galore.U2OS-b3-R15__D3__L3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D3__L3_val_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//TRIMGalore/U2OS-b3-R15__D3__L3_val_2.fq.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RawFQ/U2OS-b3-R15__D3__L3_r2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/TRIMGalore /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L3_SS2.input 
+
+CATEGORY="star.U2OS-b3-R15__D3__L3"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L3.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L3.Aligned.sortedByCoord.out.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/STAr /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L3_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz
+
+CATEGORY="hisat2.U2OS-b3-R15__D3__L3"
+CORES=10
+MEMORY=30000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3__L3.hisat2.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/HISAT2  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L3_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz
+
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R15_L1_Q803606
+Lane=L1
+Rep=D1
+AID=U2OS-b3-R15__D1__L1
+TID=U2OS-b3-R15__D1
+LID=U2OS-b3-R15__L1
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+
+CATEGORY="bwa.trans.star.U2OS-b3-R15__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.toTranscriptome.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.toTranscriptome.sortN.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L2.Aligned.toTranscriptome.out.bam  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L1.Aligned.sortedByCoord.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1__L2.Aligned.sortedByCoord.out.bam 
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranStar /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input
+
+CATEGORY="bwa.trans.hisat.U2OS-b3-R15__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D1.hisat2.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D1.hisat2.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D1__L1.hisat2.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D1__L2.hisat2.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranHisat /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input
+
+CATEGORY="rsemce.U2OS-b3-R15__D1"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RSEM//U2OS-b3-R15__D1.rsemce.isoforms.results /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RSEM//U2OS-b3-R15__D1.rsemce.genes.results : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.toTranscriptome.sortN.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/RSEMce /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.toTranscriptome.sortN.markdup.bam
+
+CATEGORY="featureCounts.U2OS-b3-R15__D1"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FeatureCounts//U2OS-b3-R15__D1.fCounts.txt : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FeatureCounts /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="asgal.splicing.U2OS-b3-R15__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//ASGAL//U2OS-b3-R15__D1/ASGAL.csv : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L1_trimmed_2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D1__L2_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/ASGAL /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input
+
+CATEGORY="spladder.splicing.U2OS-b3-R15__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//SplAdder/U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup_exon_skip_C3.txt.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/SplAdder /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="cufflinks.U2OS-b3-R15__D1"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CuffLinks//U2OS-b3-R15__D1.combined.gtf : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CuffLinks /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D1__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D1.Aligned.sortedByCoord.sort.markdup.bam
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R16_L1_Q804606
+Lane=L1
+Rep=D2
+AID=U2OS-b3-R15__D2__L1
+TID=U2OS-b3-R15__D2
+LID=U2OS-b3-R15__L1
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D2__L1)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+
+CATEGORY="bwa.trans.star.U2OS-b3-R15__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.toTranscriptome.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.toTranscriptome.sortN.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2__L1.Aligned.toTranscriptome.out.bam  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2__L1.Aligned.sortedByCoord.out.bam 
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranStar /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input
+
+CATEGORY="bwa.trans.hisat.U2OS-b3-R15__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D2.hisat2.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D2.hisat2.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D2__L1.hisat2.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranHisat /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input
+
+CATEGORY="rsemce.U2OS-b3-R15__D2"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RSEM//U2OS-b3-R15__D2.rsemce.isoforms.results /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RSEM//U2OS-b3-R15__D2.rsemce.genes.results : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.toTranscriptome.sortN.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/RSEMce /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.toTranscriptome.sortN.markdup.bam
+
+CATEGORY="featureCounts.U2OS-b3-R15__D2"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FeatureCounts//U2OS-b3-R15__D2.fCounts.txt : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FeatureCounts /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="asgal.splicing.U2OS-b3-R15__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//ASGAL//U2OS-b3-R15__D2/ASGAL.csv : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D2__L1_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/ASGAL /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input
+
+CATEGORY="spladder.splicing.U2OS-b3-R15__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//SplAdder/U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup_exon_skip_C3.txt.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/SplAdder /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="cufflinks.U2OS-b3-R15__D2"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CuffLinks//U2OS-b3-R15__D2.combined.gtf : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CuffLinks /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D2__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D2.Aligned.sortedByCoord.sort.markdup.bam
+
+
+
+SID=U2OS-b3-R15
+RID=U2OS-b3-R5_L1_Q805605
+Lane=L1
+Rep=D3
+AID=U2OS-b3-R15__D3__L1
+TID=U2OS-b3-R15__D3
+LID=U2OS-b3-R15__L1
+AIDs=(U2OS-b3-R15__D1__L1 U2OS-b3-R15__D1__L2 U2OS-b3-R15__D2__L1 U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+TIDs=(U2OS-b3-R15__D1 U2OS-b3-R15__D2 U2OS-b3-R15__D3)
+LIDs=(U2OS-b3-R15__D3__L1 U2OS-b3-R15__D3__L2 U2OS-b3-R15__D3__L3)
+Group=nan
+R1=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R1.fastq.gz
+R2=/data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R2.fastq.gz
+OUT=/data/zhouwei/02production/20200914_1800
+AUT=/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2/
+Species=hg38
+Module=SS2
+WORKFLOW_DIR=/share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe
+
+CATEGORY="bwa.trans.star.U2OS-b3-R15__D3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.toTranscriptome.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.toTranscriptome.sortN.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L1.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L2.Aligned.toTranscriptome.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L3.Aligned.toTranscriptome.out.bam  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L1.Aligned.sortedByCoord.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L2.Aligned.sortedByCoord.out.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3__L3.Aligned.sortedByCoord.out.bam 
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranStar /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input
+
+CATEGORY="bwa.trans.hisat.U2OS-b3-R15__D3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3.hisat2.sort.markdup.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3.hisat2.sortN.markdup.bam : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3__L1.hisat2.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3__L2.hisat2.bam /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//HISAT2//U2OS-b3-R15__D3__L3.hisat2.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/BAMTranHisat /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input
+
+CATEGORY="rsemce.U2OS-b3-R15__D3"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RSEM//U2OS-b3-R15__D3.rsemce.isoforms.results /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//RSEM//U2OS-b3-R15__D3.rsemce.genes.results : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.toTranscriptome.sortN.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/RSEMce /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input  /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.toTranscriptome.sortN.markdup.bam
+
+CATEGORY="featureCounts.U2OS-b3-R15__D3"
+CORES=10
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//FeatureCounts//U2OS-b3-R15__D3.fCounts.txt : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/FeatureCounts /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="asgal.splicing.U2OS-b3-R15__D3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//ASGAL//U2OS-b3-R15__D3/ASGAL.csv : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_1.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L1_trimmed_2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L2_trimmed_2.fq.gz /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CutAdapt/U2OS-b3-R15__D3__L3_trimmed_2.fq.gz
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/ASGAL /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input
+
+CATEGORY="spladder.splicing.U2OS-b3-R15__D3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//SplAdder/U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup_exon_skip_C3.txt.gz : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/SplAdder /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam
+
+CATEGORY="cufflinks.U2OS-b3-R15__D3"
+CORES=7
+MEMORY=20000
+DISK=10
+/data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//CuffLinks//U2OS-b3-R15__D3.combined.gtf : /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam
+    sh /share/home/share/Pipeline/12SCRNA/SmartSeq2Pipe/CuffLinks /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//WorkShell/U2OS-b3-R15__D3__L1_SS2.input /data/zhouwei/02production/20200914_1800/U2OS-b3-R15/SS2//STAR//U2OS-b3-R15__D3.Aligned.sortedByCoord.sort.markdup.bam
+
+
+

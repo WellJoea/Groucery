@@ -1,0 +1,12 @@
+Sampleid	Uniqueid	Lane	Rep	Group	Module	Species	Outdir	Porject	Fastq	Havadone
+U2OS-b3-R1	U2OS-b3-R1	L1	D1		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R1_L1_Q801605.R2.fastq.gz	
+U2OS-b3-R1	U2OS-b3-R2	L2	D1		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R13_L1_Q801606.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R13_L1_Q801606.R2.fastq.gz	
+U2OS-b3-R1	U2OS-b3-R3	L3	D1		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R2_L1_Q802605.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R2_L1_Q802605.R2.fastq.gz	
+U2OS-b3-R1	U2OS-b3-R4	L1	D2		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R14_L1_Q802606.R2.fastq.gz	
+U2OS-b3-R1	U2OS-b3-R5	L2	D2		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R3_L1_Q803605.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R3_L1_Q803605.R2.fastq.gz	
+U2OS-b3-R15	U2OS-b3-R15_L1_Q803606	L1	D1		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R15_L1_Q803606.R2.fastq.gz	
+U2OS-b3-R15	U2OS-b3-R4_L1_Q804605	L2	D1		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R4_L1_Q804605.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R4_L1_Q804605.R2.fastq.gz	
+U2OS-b3-R15	U2OS-b3-R16_L1_Q804606	L1	D2		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R16_L1_Q804606.R2.fastq.gz	
+U2OS-b3-R15	U2OS-b3-R5_L1_Q805605	L1	D3		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R5_L1_Q805605.R2.fastq.gz	
+U2OS-b3-R15	U2OS-b3-R17_L1_Q805606	L2	D3		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R17_L1_Q805606.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R17_L1_Q805606.R2.fastq.gz	
+U2OS-b3-R15	U2OS-b3-R6_L1_Q806605	L3	D3		SS2	hg38	/data/zhouwei/02production/20200914_1800		/data/pubdata/SCDB/20200914_1800/U2OS-b3-R6_L1_Q806605.R1.fastq.gz,/data/pubdata/SCDB/20200914_1800/U2OS-b3-R6_L1_Q806605.R2.fastq.gz	

@@ -1,0 +1,23 @@
+***********************************************************
+* Author : Zhou Wei                                       *
+* Date   : Tue Oct 06 17:20:58 2020                       *
+* E-mail : welljoea@gmail.com                             *
+* You are using The scripted by Zhou Wei.                 *
+* If you find some bugs, please email to me.              *
+* Please let me know and acknowledge in your publication. *
+* Sincerely                                               *
+* Best wishes!                                            *
+***********************************************************
+***********The argument you have set as follows:***********
+**01|commands     : Auto
+**02|input        : 20200914.txt
+**03|outdir       : /share/home/share/Pipeline/Groucery
+**04|prefix       : 
+**05|jobway       : sge
+**06|qsub         : False
+**07|flowfile     : None
+**08|pipeline     : None
+**09|MODEL        : ['Standard']
+***********************************************************
+[2020-10-06 17:21:00] [INFO]: Success!!!
+[2020-10-06 17:21:00] [INFO]: You can check your progress in log file.
